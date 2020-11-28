@@ -20,7 +20,7 @@ public class CameraFolowing : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _nextPosition = _player.position + _player.velocity.normalized * 2f;
+        _nextPosition = _player.position + Vector3.ClampMagnitude(_player.velocity, 2f);
         _nextPosition += Vector3.up * Mathf.Cos(Mathf.Deg2Rad * _angle) * _distance;
         _nextPosition += Vector3.back * Mathf.Sin(Mathf.Deg2Rad * _angle) * _distance;
         transform.position = Vector3.Lerp(transform.position, _nextPosition, _speed * Time.deltaTime);

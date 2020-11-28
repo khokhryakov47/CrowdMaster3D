@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDelayTransition : EnemyTransition
+public class BrokenDelayTransition : EnemyTransition
 {
     [SerializeField] private float _delay;
 

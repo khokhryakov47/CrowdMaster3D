@@ -6,7 +6,7 @@ public class WaitingState : EnemyState
 {
     private void OnEnable()
     {
-        Animator.SetTrigger("idle");
+        Animator.SetTrigger("setup");
     }
 
     private void Update()

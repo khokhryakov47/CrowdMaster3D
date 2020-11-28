@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0399e6b0724682f40875a59390736de2, type: 3}
-  m_Name: SwordAbility
+  m_Script: {fileID: 11500000, guid: 73668ac86a03478469978ec47b89ce55, type: 3}
+  m_Name: HandUltimateAbility
   m_EditorClassIdentifier: 
-  _waveCount: 1
-  _radius: 2
-  _damage: 20
-  _waveDelay: 0
+  _usefulTime: 0.25
+  _attackForce: 40

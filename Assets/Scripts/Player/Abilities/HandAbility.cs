@@ -6,8 +6,8 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "New Hand Ability", menuName = "Player/Abilities/Hand", order = 51)]
 public class HandAbility : Ability
 {
-    [SerializeField] private float _utlimateTime;
-    [SerializeField] private float _utlimateForce;
+    [SerializeField] private float _usefulTime;
+    [SerializeField] private float _attackForce;
 
     private AttackState _ultimateState;
     private Coroutine _coroutine;
@@ -27,7 +27,7 @@ public class HandAbility : Ability
 
     private void OnPlayerAttack(IDamageable damageable)
     {
-        if (damageable.ApplyDamage(_ultimateState.Body, _utlimateForce) == false)
+        if (damageable.ApplyDamage(_ultimateState.Body, _attackForce) == false)
             return;
 
         _ultimateState.Body.velocity /= 2;
@@ -35,10 +35,10 @@ public class HandAbility : Ability
 
     private IEnumerator AttackCoroutine(AttackState ultimateState)
     {
-        float time = _utlimateTime;
+        float time = _usefulTime;
         while (time > 0)
         {
-            ultimateState.Body.velocity = ultimateState.Body.velocity.normalized * _utlimateForce;
+            ultimateState.Body.velocity = ultimateState.Body.velocity.normalized * _attackForce;
             time -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }

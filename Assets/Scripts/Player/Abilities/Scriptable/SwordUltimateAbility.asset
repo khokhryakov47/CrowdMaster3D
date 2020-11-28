@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0399e6b0724682f40875a59390736de2, type: 3}
-  m_Name: SwordAbility
+  m_Name: SwordUltimateAbility
   m_EditorClassIdentifier: 
-  _waveCount: 1
+  _waveCount: 2
   _radius: 2
-  _damage: 20
-  _waveDelay: 0
+  _damage: 30
+  _waveDelay: 0.4

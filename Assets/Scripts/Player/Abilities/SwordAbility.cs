@@ -6,7 +6,10 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "New Sword Ability", menuName = "Player/Abilities/Sword", order = 51)]
 public class SwordAbility : Ability
 {
+    [SerializeField] private float _waveCount;
     [SerializeField] private float _radius;
+    [SerializeField] private float _damage;
+    [SerializeField] private float _waveDelay;
 
     private AttackState _player;
     private Coroutine _coroutine;
@@ -24,13 +27,17 @@ public class SwordAbility : Ability
 
     private IEnumerator AttackCoroutine(AttackState player, float radius)
     {
-        Collider[] colliders = Physics.OverlapSphere(player.transform.position + Vector3.up * 0.5f, radius);
-
-        foreach (var item in colliders)
+        for (int i = 0; i < _waveCount; i++)
         {
-            if (item.TryGetComponent(out IDamageable damageable))
-                damageable.ApplyDamage(player.Body, 20f);
-            yield return new WaitForEndOfFrame();
+            Collider[] colliders = Physics.OverlapSphere(player.transform.position + Vector3.up * 0.5f, radius);
+
+            foreach (var item in colliders)
+            {
+                if (item.TryGetComponent(out IDamageable damageable))
+                    damageable.ApplyDamage(player.Body, _damage);
+                yield return new WaitForEndOfFrame();
+            }
+            yield return new WaitForSeconds(_waveDelay);
         }
 
         AbilityEnded?.Invoke();

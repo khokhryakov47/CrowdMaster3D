@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73668ac86a03478469978ec47b89ce55, type: 3}
   m_Name: HandAbility
   m_EditorClassIdentifier: 
-  _utlimateTime: 0.2
-  _utlimateForce: 20
+  _usefulTime: 0.2
+  _attackForce: 20

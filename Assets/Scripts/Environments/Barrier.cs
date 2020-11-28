@@ -19,7 +19,7 @@ public class Barrier : MonoBehaviour, IDamageable
         if (_body.velocity.magnitude > force)
             return false;
 
-        Vector3 forwardDirection = attachedBody.transform.forward.ToPlane();
+        Vector3 forwardDirection = (transform.position - attachedBody.transform.position).ToPlane();
         _body.AddForce(forwardDirection.normalized * force * _forceRate, ForceMode.Force);
         return true;
     }

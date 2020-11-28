@@ -16,9 +16,9 @@ public class AttackState : PlayerState
     {
         Animator.SetTrigger("attack");
         _currentAbility = _manaAccumulator.GetAbility();
-        _currentAbility.UseAbility(this);
-
         _currentAbility.AbilityEnded += OnAbilityEnded;
+
+        _currentAbility.UseAbility(this);
     }
 
     private void OnDisable()

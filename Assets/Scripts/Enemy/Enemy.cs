@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator), typeof(Rigidbody))]
 public class Enemy : MonoBehaviour, IDamageable
@@ -12,6 +13,8 @@ public class Enemy : MonoBehaviour, IDamageable
     private EnemyState _currentState;
     private Rigidbody _body;
     private float _minDamageValue = 7f;
+
+    public event UnityAction<Enemy> Died;
 
     public Animator Animator { get; private set; }
     public Player Player { get; private set; }
@@ -39,6 +42,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         enabled = false;
         _body.constraints = RigidbodyConstraints.None;
+        Died?.Invoke(this);
     }
 
     private void Start()

@@ -15,12 +15,19 @@ public class ShurikenAbility : Ability
         InstatiateShuriken(player, player.transform.forward);
         InstatiateShuriken(player, player.transform.forward.RotateAroundY(5));
         InstatiateShuriken(player, player.transform.forward.RotateAroundY(-5));
+
+        player.StartCoroutine(AttackDelay(0.5f));
+    }
+
+    private IEnumerator AttackDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         AbilityEnded?.Invoke();
     }
 
     private void InstatiateShuriken(AttackState player, Vector3 direction)
     {
-        var inst = Instantiate(_shuriken, player.transform.position + Vector3.up + direction, Quaternion.identity);
+        var inst = Instantiate(_shuriken, player.transform.position + Vector3.up, Quaternion.identity);
         inst.SetDirection(direction);
     }
 }

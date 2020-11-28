@@ -14,14 +14,14 @@ public class HandAbility : Ability
 
     public override event UnityAction AbilityEnded;
 
-    public override void UseAbility(AttackState ultimateState)
+    public override void UseAbility(AttackState attackState)
     {
         if (_coroutine != null)
             Reset();
 
-        _ultimateState = ultimateState;
+        _ultimateState = attackState;
 
-        _coroutine = ultimateState.StartCoroutine(AttackCoroutine(ultimateState));
+        _coroutine = attackState.StartCoroutine(AttackCoroutine(attackState));
         _ultimateState.CollisionDetected += OnPlayerAttack;
     }
 

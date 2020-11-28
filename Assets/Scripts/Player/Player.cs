@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     private PlayerState _currentState;
 
+    public event UnityAction Damaged;
+
     public Rigidbody Body { get; private set; }
     public Animator Animator { get; private set; }
 
@@ -69,6 +71,7 @@ public class Player : MonoBehaviour
             return false;
 
         _health.TakeDamage((int)damage);
+        Damaged?.Invoke();
         return true;
     }
 }

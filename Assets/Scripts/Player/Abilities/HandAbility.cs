@@ -27,8 +27,10 @@ public class HandAbility : Ability
 
     private void OnPlayerAttack(IDamageable damageable)
     {
-        damageable.ApplyDamage(_ultimateState.Body, _utlimateForce);
-        _ultimateState.Body.velocity = Vector3.zero;
+        if (damageable.ApplyDamage(_ultimateState.Body, _utlimateForce) == false)
+            return;
+
+        _ultimateState.Body.velocity /= 2;
     }
 
     private IEnumerator AttackCoroutine(AttackState ultimateState)

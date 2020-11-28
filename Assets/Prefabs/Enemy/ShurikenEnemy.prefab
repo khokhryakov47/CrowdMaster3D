@@ -823,7 +823,8 @@ MonoBehaviour:
   - {fileID: 9005629359736296935}
   _surikenContainer: {fileID: 8767520794391647167}
   _shurikenTemplate: {fileID: 4408409848204159417, guid: 3e2f55d35d732df42915a30ceea449ec, type: 3}
-  _attackDelay: 4
+  _minAttackDelay: 2
+  _maxAttackDelay: 5
 --- !u!114 &3045802188420178504
 MonoBehaviour:
   m_ObjectHideFlags: 0

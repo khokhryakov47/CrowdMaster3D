@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private EnemyState _currentState;
     private Rigidbody _body;
+    private float _minDamageValue = 7f;
 
     public Animator Animator { get; private set; }
     public Player Player { get; private set; }
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public bool ApplyDamage(Rigidbody body, float force)
     {   
-        if (force > 5f && _currentState != _brokenState)
+        if (force > _minDamageValue && _currentState != _brokenState)
         {
             _health.TakeDamage((int)force);
             Transit(_brokenState);
